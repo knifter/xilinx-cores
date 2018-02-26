@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="axis_labcontrol_interface_test_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axis_labcontrol_interface_test" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="23710000fs"></ZoomStartTime>
+      <ZoomEndTime time="611348850fs"></ZoomEndTime>
+      <Cursor1Time time="350000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="207"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/axis_labcontrol_interface_test/clk100" type="logic">
+      <obj_property name="ElementShortName">clk100</obj_property>
+      <obj_property name="ObjectShortName">clk100</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/addr" type="array">
+      <obj_property name="ElementShortName">addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/data" type="array">
+      <obj_property name="ElementShortName">data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/strobe" type="logic">
+      <obj_property name="ElementShortName">strobe</obj_property>
+      <obj_property name="ObjectShortName">strobe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/lc_bus" type="array">
+      <obj_property name="ElementShortName">lc_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">lc_bus[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="group47" type="group">
+      <obj_property name="label">LabBus</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/axis_labcontrol_interface_test/DUT/DIOA" type="array">
+         <obj_property name="ElementShortName">DIOA[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DIOA[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_labcontrol_interface_test/DUT/DIOB" type="array">
+         <obj_property name="ElementShortName">DIOB[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DIOB[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_labcontrol_interface_test/DUT/DIOC" type="array">
+         <obj_property name="ElementShortName">DIOC[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DIOC[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_labcontrol_interface_test/DUT/DIOD" type="array">
+         <obj_property name="ElementShortName">DIOD[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DIOD[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/lc_address" type="array">
+      <obj_property name="ElementShortName">lc_address[7:0]</obj_property>
+      <obj_property name="ObjectShortName">lc_address[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/lc_data" type="array">
+      <obj_property name="ElementShortName">lc_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">lc_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/address_match" type="logic">
+      <obj_property name="ElementShortName">address_match</obj_property>
+      <obj_property name="ObjectShortName">address_match</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/lc_strobe" type="logic">
+      <obj_property name="ElementShortName">lc_strobe</obj_property>
+      <obj_property name="ObjectShortName">lc_strobe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/strobe_sync" type="logic">
+      <obj_property name="ElementShortName">strobe_sync</obj_property>
+      <obj_property name="ObjectShortName">strobe_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/strobe_pulse" type="logic">
+      <obj_property name="ElementShortName">strobe_pulse</obj_property>
+      <obj_property name="ObjectShortName">strobe_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/data_valid" type="logic">
+      <obj_property name="ElementShortName">data_valid</obj_property>
+      <obj_property name="ObjectShortName">data_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/DUT/data_reg" type="array">
+      <obj_property name="ElementShortName">data_reg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_reg[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/m_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_labcontrol_interface_test/m_axis_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+   </wvobject>
+</wave_config>
