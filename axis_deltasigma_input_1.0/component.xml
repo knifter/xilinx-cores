@@ -385,7 +385,7 @@
       </xilinx:supportedFamilies>
       <xilinx:taxonomies>
         <xilinx:taxonomy>/AXI_Peripheral</xilinx:taxonomy>
-        <xilinx:taxonomy>/FPGA_Features_and_Design/IO_Interfaces</xilinx:taxonomy>
+        <xilinx:taxonomy>/IO_Interface</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>AXI4-Stream Delta-Sigma Input</xilinx:displayName>
       <xilinx:vendorDisplayName>Tijs van Roon (Universiteit van Amsterdam)</xilinx:vendorDisplayName>
