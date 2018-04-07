@@ -9,6 +9,8 @@ proc init_gui { IPINST } {
   set_property tooltip {Width of the AXI data bus.} ${AXI_DATA_WIDTH}
   set AXI_ADDR_WIDTH [ipgui::add_param $IPINST -name "AXI_ADDR_WIDTH" -parent ${AXI}]
   set_property tooltip {Width of the AXI address bus.} ${AXI_ADDR_WIDTH}
+  set TWOS_COMPL [ipgui::add_param $IPINST -name "TWOS_COMPL" -parent ${AXI}]
+  set_property tooltip {AXIS Data will be sign-extended to AXI width} ${TWOS_COMPL}
 
   #Adding Group
   set AXI-Stream [ipgui::add_group $IPINST -name "AXI-Stream" -parent ${Page_0}]
@@ -46,6 +48,15 @@ proc validate_PARAM_VALUE.AXI_DATA_WIDTH { PARAM_VALUE.AXI_DATA_WIDTH } {
 	return true
 }
 
+proc update_PARAM_VALUE.TWOS_COMPL { PARAM_VALUE.TWOS_COMPL } {
+	# Procedure called to update TWOS_COMPL when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.TWOS_COMPL { PARAM_VALUE.TWOS_COMPL } {
+	# Procedure called to validate TWOS_COMPL
+	return true
+}
+
 
 proc update_MODELPARAM_VALUE.AXI_DATA_WIDTH { MODELPARAM_VALUE.AXI_DATA_WIDTH PARAM_VALUE.AXI_DATA_WIDTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
@@ -60,5 +71,10 @@ proc update_MODELPARAM_VALUE.AXI_ADDR_WIDTH { MODELPARAM_VALUE.AXI_ADDR_WIDTH PA
 proc update_MODELPARAM_VALUE.AXIS_DATA_WIDTH { MODELPARAM_VALUE.AXIS_DATA_WIDTH PARAM_VALUE.AXIS_DATA_WIDTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.AXIS_DATA_WIDTH}] ${MODELPARAM_VALUE.AXIS_DATA_WIDTH}
+}
+
+proc update_MODELPARAM_VALUE.TWOS_COMPL { MODELPARAM_VALUE.TWOS_COMPL PARAM_VALUE.TWOS_COMPL } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.TWOS_COMPL}] ${MODELPARAM_VALUE.TWOS_COMPL}
 }
 

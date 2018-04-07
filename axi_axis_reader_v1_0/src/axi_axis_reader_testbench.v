@@ -27,8 +27,8 @@ module axi_axis_reader_testbench(    );
     
     // AXI Slave side
     localparam AXI_ADDR_WIDTH = 12;
-    localparam AXI_DATA_WIDTH = 4;
-    localparam AXIS_DATA_WIDTH = 8;
+    localparam AXI_DATA_WIDTH = 32;
+    localparam AXIS_DATA_WIDTH = 24;
 
     reg [AXI_ADDR_WIDTH-1:0]    s_axi_awaddr;  // AXI4-Lite slave: Write address
     reg                         s_axi_awvalid; // AXI4-Lite slave: Write address valid
@@ -91,7 +91,7 @@ module axi_axis_reader_testbench(    );
         #20 rst = 0;
         
         #20
-        s_axis_tdata = 8'h35;
+        s_axis_tdata = 24'h000FF; // 255
         
         #20
         s_axis_tvalid = 1;
@@ -101,6 +101,22 @@ module axi_axis_reader_testbench(    );
         
         #20
         s_axi_rready = 1;
+        
+        #20
+        s_axi_rready = 0;
+        
+        #20
+        s_axis_tdata = 24'h8000FF; // -255
+        
+        #20
+        s_axis_tvalid = 1;
+        
+        #20 s_axi_arvalid = 1;
+        #10 s_axi_arvalid = 0;
+        
+        #20
+        s_axi_rready = 1;
+        
     end
     
     // Generate CLK 100 MHz

@@ -5,7 +5,8 @@ module axi_axis_reader #
 (
   parameter integer AXI_DATA_WIDTH = 32,
   parameter integer AXI_ADDR_WIDTH = 12,
-  parameter integer AXIS_DATA_WIDTH = 32
+  parameter integer AXIS_DATA_WIDTH = 32,
+  parameter integer TWOS_COMPL = 1
 )
 (
   // System signals
@@ -36,14 +37,22 @@ module axi_axis_reader #
   output wire                      s_axis_tready
 );
 
+    localparam SIGN_BIT = (1 << (AXIS_DATA_WIDTH - 1));
+    localparam NOSIGN_MASK = (SIGN_BIT - 1);
+   
   wire [AXI_DATA_WIDTH-1:0] s_axis_tdata_sized;
   // S_AXIS_DATA_WIDTH == S_AXI_DATA_WIDTH
   if ( AXIS_DATA_WIDTH == AXI_DATA_WIDTH )  // -> [01234567]
     assign s_axis_tdata_sized = s_axis_tdata;
   if ( AXIS_DATA_WIDTH > AXI_DATA_WIDTH ) // -> [0123]4567
     assign s_axis_tdata_sized = s_axis_tdata[AXIS_DATA_WIDTH-1:(AXIS_DATA_WIDTH-AXI_DATA_WIDTH)];
-  if ( AXIS_DATA_WIDTH < AXI_DATA_WIDTH ) // [<0>][0123456789]
-    assign s_axis_tdata_sized = { {(AXI_DATA_WIDTH - AXIS_DATA_WIDTH){1'b0}}, s_axis_tdata};
+  if ( AXIS_DATA_WIDTH < AXI_DATA_WIDTH ) // [<SIGN>/<0>][S123456789]
+  begin
+    if(TWOS_COMPL)
+        assign s_axis_tdata_sized = ((s_axis_tdata & NOSIGN_MASK) - (s_axis_tdata & SIGN_BIT));
+    else
+        assign s_axis_tdata_sized = { {(AXI_DATA_WIDTH - AXIS_DATA_WIDTH){1'b0}}, s_axis_tdata}; 
+  end
 
   reg int_rvalid_reg, int_rvalid_next;
   reg [AXI_DATA_WIDTH-1:0] int_rdata_reg, int_rdata_next;
