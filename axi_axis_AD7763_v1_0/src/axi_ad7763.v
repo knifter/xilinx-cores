@@ -178,7 +178,7 @@ module axi_ad7763 #
                 // ready for action when wdata_available
                 STATE_IDLE:
                 begin
-                    if(int_wdata_available_reg)
+                    if(int_wdata_available_reg) // TODO int_wdata is being set at the same time!
                     begin
                         shift_out <= int_wdata_reg;
                         state <= STATE_START;
