@@ -9,7 +9,8 @@ module axis_labcontrol_interface #
     parameter integer LC_ADDR_WIDTH = 8,
     parameter integer LC_SBUS_WIDTH = 3,
     parameter integer LC_RESV_WIDTH = 3,
-    parameter integer LC_ADDRESS   = 'h10
+    parameter integer LC_ADDRESS   = 'hFF,
+    parameter integer TWOS_COMPL = 1
 )
 (
     // System signals
@@ -40,8 +41,8 @@ module axis_labcontrol_interface #
     
     // Create synchronized strobe-pulse 
     wire strobe_sync, strobe_pulse;
-    Sync sync_strobe_inst (m_axis_aclk, lc_strobe, strobe_sync);
-    Pulse pulse_strobe_inst (m_axis_aclk, strobe_sync, strobe_pulse);
+    axis_labcontrol_interface_Sync sync_strobe_inst (m_axis_aclk, lc_strobe, strobe_sync);
+    axis_labcontrol_interface_Pulse pulse_strobe_inst (m_axis_aclk, strobe_sync, strobe_pulse);
          
     // Generate strobe_pulse
     reg [LC_DATA_WIDTH-1:0]     data_reg;
@@ -66,18 +67,26 @@ module axis_labcontrol_interface #
         end
     end
     
+    localparam SIGN_BIT = (1 << (AXIS_DATA_WIDTH - 1));
+    localparam NOSIGN_MASK = (SIGN_BIT - 1);
+
     //  Connect AXIS Data to LC-Data gathered
     if ( AXIS_DATA_WIDTH == LC_DATA_WIDTH )
         assign m_axis_tdata = data_reg;
     if ( AXIS_DATA_WIDTH < LC_DATA_WIDTH ) 
         assign m_axis_tdata = data_reg[AXIS_DATA_WIDTH-1:0]; // Take LSB's
     if ( AXIS_DATA_WIDTH > LC_DATA_WIDTH )
-        assign m_axis_tdata = { {(AXIS_DATA_WIDTH - LC_DATA_WIDTH){1'b0}}, data_reg};
-
+    begin
+      if(TWOS_COMPL)
+          assign m_axis_tdata = ((data_reg & NOSIGN_MASK) - (data_reg & SIGN_BIT));
+      else
+          assign m_axis_tdata = { {(AXIS_DATA_WIDTH - LC_DATA_WIDTH){1'b0}}, data_reg}; 
+    end
+ 
     assign m_axis_tvalid = data_valid;
 endmodule
 
-module Sync #(
+module axis_labcontrol_interface_Sync #(
     parameter STAGES = 2
 ) (
     input wire      aclk,
@@ -93,7 +102,7 @@ module Sync #(
     
 endmodule
 
-module Pulse #(
+module axis_labcontrol_interface_Pulse #(
     parameter STAGES = 2
 ) (
     input wire      aclk,
