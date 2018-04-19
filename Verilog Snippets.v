@@ -1,3 +1,4 @@
+
 // Synchronize signal s from another clock to o on aclk domain
 module Sync #(
     parameter STAGES = 2
