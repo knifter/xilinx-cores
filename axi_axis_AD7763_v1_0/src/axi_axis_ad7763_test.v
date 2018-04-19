@@ -52,10 +52,11 @@ module axi_axis_ad7763_test(    );
     wire [AXIS_WIDTH-1:0]       m_axis_tdata;
     wire                        m_axis_tvalid;
     reg                         m_axis_tready;
+    wire                        m_axis_aclk;
     
     // ADC Connections
     wire               adc_sco;       // Serial Clock Out
-    reg                adc_fson;      // Frame Sync Out, negated
+    reg                adc_dreadyn;      // Frame Sync Out, negated
     reg                adc_sdo;       // Serial Data Out
     wire               adc_fsin;      // Frame Sync In, negated
     wire               adc_sdi;        // Serial Data In
@@ -63,7 +64,8 @@ module axi_axis_ad7763_test(    );
     wire aresetn = ~rst;
     assign adc_sco = clk40;
     axi_axis_ad7763 DUT(
-        clk100, aresetn,
+        clk100, aresetn, 
+        adc_sco,
         
         s_axi_awaddr, s_axi_awvalid, s_axi_awready, 
         s_axi_wdata, s_axi_wvalid, s_axi_wready,
@@ -72,10 +74,10 @@ module axi_axis_ad7763_test(    );
         s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready,
         
         // AXIS Master side
-        m_axis_tdata, m_axis_tvalid, m_axis_tready,
+        m_axis_tdata, m_axis_tvalid, m_axis_tready, m_axis_aclk,
          
         // ADC Connections
-        adc_sco, adc_fson, adc_sdo, adc_fsin, adc_sdi
+        adc_dreadyn, adc_sdo, adc_fsin, adc_sdi
         );
     
     reg [23:0] adc;
@@ -87,7 +89,7 @@ module axi_axis_ad7763_test(    );
         s_axi_wvalid = 0;
         s_axi_wdata = 32'hFFFF;
         s_axi_bready = 0;
-        adc_fson = 1;
+//        adc_dreadyn = 1;
         adc_sdo  = 0;
         m_axis_tready = 0;
         adc = 0;
@@ -117,9 +119,9 @@ module axi_axis_ad7763_test(    );
     
     always begin
         //#100 adc = adc; // stretch
-        #25 adc_fson = 0;
+        #25 adc_dreadyn = 0;
         adc = adc + 1;
-        #25 adc_fson = 1;
+        #25 adc_dreadyn = 1;
         adc_sdo = adc[23];
         #25 adc_sdo = adc[22];
         #25 adc_sdo = adc[21];

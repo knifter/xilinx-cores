@@ -11,6 +11,7 @@ module axi_axis_ad7763 #
     // System signals
     input  wire                      s_axi_aclk,
     input  wire                      s_axi_aresetn,
+    input  wire                      s_ad7763_clk,
     
     // AXI Slave side
     input  wire [AXI_ADDR_WIDTH-1:0] s_axi_awaddr,  // AXI4-Lite slave: Write address
@@ -37,14 +38,13 @@ module axi_axis_ad7763 #
     output wire                      m_axis_aclk,   // Stream Clock == ADC Clock
     
     // ADC Connections
-    input  wire                      adc_sco,       // Serial Clock Out
-    input  wire                      adc_fson,      // Frame Sync Out, negated
-    input  wire                      adc_sdo,       // Serial Data Out
-    output wire                      adc_fsin,      // Frame Sync In, negated
-    output wire                      adc_sdi        // Serial Data In
+    input  wire                      adc_dreadyn,   // ADC Data Ready Out, negated
+    input  wire                      adc_sdo,       // ADC Serial Data Out
+    output wire                      adc_fsin,      // ADC Frame Sync In, negated
+    output wire                      adc_sdi        // ADC Serial Data In
 );
 
-    assign m_axis_aclk = adc_sco;
+    assign m_axis_aclk = s_ad7763_clk;
     
     // AXI Control In
     axi_ad7763 #(
@@ -72,7 +72,7 @@ module axi_axis_ad7763 #
         .s_axi_rready(s_axi_rready),    // AXI4-Lite slave: Read data ready
         
         // ADC Connections
-        .adc_sco(adc_sco),              // Serial Clock Out
+        .adc_sco(s_ad7763_clk),         // Serial Clock Out
         .adc_fsin(adc_fsin),            // Frame Sync In, negated
         .adc_sdi(adc_sdi)               // Serial Data In
     );
@@ -81,14 +81,14 @@ module axi_axis_ad7763 #
     axis_ad7763 #(
         .AXIS_DATA_WIDTH(AXIS_DATA_WIDTH)
     )axis_inst(
+        .aclk(s_ad7763_clk),
         .aresetn(s_axi_aresetn),
         
         .m_axis_tdata(m_axis_tdata),
         .m_axis_tvalid(m_axis_tvalid),
         .m_axis_tready(m_axis_tready),
             
-        .adc_sco(adc_sco),
-        .adc_fson(adc_fson),
+        .adc_dreadyn(adc_dreadyn),
         .adc_sdo(adc_sdo)
         );
 endmodule

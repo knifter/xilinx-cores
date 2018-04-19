@@ -3,30 +3,12 @@
   <spirit:vendor>tijs-roon</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>AD7763_rtl</spirit:name>
-  <spirit:version>1.0</spirit:version>
-  <spirit:busType spirit:vendor="tijs-roon" spirit:library="user" spirit:name="AD7763" spirit:version="1.0"/>
+  <spirit:version>1.1</spirit:version>
+  <spirit:busType spirit:vendor="tijs-roon" spirit:library="user" spirit:name="AD7763" spirit:version="1.1"/>
   <spirit:ports>
     <spirit:port>
-      <spirit:logicalName>adc_fson</spirit:logicalName>
-      <spirit:description>Frame Sync In</spirit:description>
-      <spirit:wire>
-        <spirit:qualifier>
-          <spirit:isData>true</spirit:isData>
-        </spirit:qualifier>
-        <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
-          <spirit:width>1</spirit:width>
-        </spirit:onMaster>
-        <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
-          <spirit:width>1</spirit:width>
-          <spirit:direction>in</spirit:direction>
-        </spirit:onSlave>
-      </spirit:wire>
-    </spirit:port>
-    <spirit:port>
       <spirit:logicalName>adc_fsin</spirit:logicalName>
-      <spirit:description>Frame Sync Out</spirit:description>
+      <spirit:description>ADC Frame Sync In</spirit:description>
       <spirit:wire>
         <spirit:qualifier>
           <spirit:isData>true</spirit:isData>
@@ -43,11 +25,11 @@
       </spirit:wire>
     </spirit:port>
     <spirit:port>
-      <spirit:logicalName>adc_sco</spirit:logicalName>
-      <spirit:description>Clock In</spirit:description>
+      <spirit:logicalName>adc_dreadyn</spirit:logicalName>
+      <spirit:description>ADC Data Ready Out</spirit:description>
       <spirit:wire>
         <spirit:qualifier>
-          <spirit:isClock>true</spirit:isClock>
+          <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
           <spirit:presence>required</spirit:presence>
@@ -62,7 +44,7 @@
     </spirit:port>
     <spirit:port>
       <spirit:logicalName>adc_sdi</spirit:logicalName>
-      <spirit:description>Serial Data Out</spirit:description>
+      <spirit:description>ADC Serial Data In</spirit:description>
       <spirit:wire>
         <spirit:qualifier>
           <spirit:isData>true</spirit:isData>
@@ -80,7 +62,7 @@
     </spirit:port>
     <spirit:port>
       <spirit:logicalName>adc_sdo</spirit:logicalName>
-      <spirit:description>Serial Data In</spirit:description>
+      <spirit:description>ADC Serial Data Out</spirit:description>
       <spirit:wire>
         <spirit:qualifier>
           <spirit:isData>true</spirit:isData>

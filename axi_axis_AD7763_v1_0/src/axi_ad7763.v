@@ -156,6 +156,9 @@ module axi_ad7763 #
     assign s_axi_rvalid = 1'b0; // Not valid
     
     // Write REGs (ADC CLK)
+    wire wdata_available_sync;
+    axi_ad7763_Sync sync0(adc_sco, wdata_available_sync, int_wdata_available_reg); 
+    
     reg [3:0] state;    
     localparam STATE_IDLE			= 4'b0000;
     localparam STATE_START          = 4'b0001;
@@ -178,7 +181,7 @@ module axi_ad7763 #
                 // ready for action when wdata_available
                 STATE_IDLE:
                 begin
-                    if(int_wdata_available_reg) // TODO int_wdata is being set at the same time!
+                    if(wdata_available_sync) // TODO int_wdata is being set at the same time!
                     begin
                         shift_out <= int_wdata_reg;
                         state <= STATE_START;
@@ -215,4 +218,20 @@ module axi_ad7763 #
         end
     end    
     assign adc_sdi = shift_out[31];
+endmodule
+
+module axi_ad7763_Sync #(
+    parameter STAGES = 2
+) (
+    input wire      aclk,
+    output reg      o,
+    input wire      s
+);
+    
+    reg [STAGES-2:0] meta;
+    always @(posedge aclk)
+    begin
+        {o, meta[STAGES-2:0]} <= {meta[STAGES-2:0], s};
+    end
+    
 endmodule
