@@ -29,7 +29,7 @@ module axis_labcontrol_interface #
     input wire [7:0]    DIOD
 );
     // Split bus into Address, Data, Strobe
-    wire [LC_DATA_WIDTH-1:0]        lc_data     = {DIOA, DIOB};
+    wire [LC_DATA_WIDTH-1:0]        lc_data     = {DIOB, DIOA};
     wire [LC_ADDR_WIDTH-1:0]        lc_address  = DIOC;
     wire [LC_RESV_WIDTH-1:0]        lc_reserved = DIOD[7:5];
     wire [LC_SBUS_WIDTH-1:0]        lc_subbus   = DIOD[4:2];
