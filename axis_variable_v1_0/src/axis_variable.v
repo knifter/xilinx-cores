@@ -10,7 +10,7 @@ module axis_variable #
   input  wire                        aclk,
   input  wire                        aresetn,
 
-  input  wire [AXIS_TDATA_WIDTH-1:0] cfg_data,
+  input  wire [AXIS_TDATA_WIDTH-1:0] data_in,
 
   // Master side
   input  wire                        m_axis_tready,
@@ -30,7 +30,7 @@ module axis_variable #
     end
     else
     begin
-      int_tdata_reg <= cfg_data;
+      int_tdata_reg <= data_in;
       int_tvalid_reg <= int_tvalid_next;
     end
   end
@@ -39,11 +39,13 @@ module axis_variable #
   begin
     int_tvalid_next = int_tvalid_reg;
 
-    if(int_tdata_reg != cfg_data)
+    // If input data changes clock a new output value
+    if(int_tdata_reg != data_in)
     begin
       int_tvalid_next = 1'b1;
     end
 
+    // Acknoledge if the AXIS-Slave has got the data 
     if(m_axis_tready & int_tvalid_reg)
     begin
       int_tvalid_next = 1'b0;
