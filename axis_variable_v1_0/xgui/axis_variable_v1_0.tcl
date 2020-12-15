@@ -3,7 +3,7 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
   set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  set AXIS_TDATA_WIDTH [ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${Page_0}]
+  ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${Page_0}
   set_property tooltip {Width of the M_AXIS data bus.} ${AXIS_TDATA_WIDTH}
 
 

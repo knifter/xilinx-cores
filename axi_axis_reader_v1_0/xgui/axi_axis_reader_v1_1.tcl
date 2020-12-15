@@ -5,16 +5,16 @@ proc init_gui { IPINST } {
   set Page_0 [ipgui::add_page $IPINST -name "Page 0" -display_name {AXI}]
   #Adding Group
   set AXI [ipgui::add_group $IPINST -name "AXI" -parent ${Page_0}]
-  set AXI_DATA_WIDTH [ipgui::add_param $IPINST -name "AXI_DATA_WIDTH" -parent ${AXI}]
+  ipgui::add_param $IPINST -name "AXI_DATA_WIDTH" -parent ${AXI}
   set_property tooltip {Width of the AXI data bus.} ${AXI_DATA_WIDTH}
-  set AXI_ADDR_WIDTH [ipgui::add_param $IPINST -name "AXI_ADDR_WIDTH" -parent ${AXI}]
+  ipgui::add_param $IPINST -name "AXI_ADDR_WIDTH" -parent ${AXI}
   set_property tooltip {Width of the AXI address bus.} ${AXI_ADDR_WIDTH}
   set TWOS_COMPL [ipgui::add_param $IPINST -name "TWOS_COMPL" -parent ${AXI}]
   set_property tooltip {AXIS Data will be sign-extended to AXI width} ${TWOS_COMPL}
 
   #Adding Group
   set AXI-Stream [ipgui::add_group $IPINST -name "AXI-Stream" -parent ${Page_0}]
-  set AXIS_DATA_WIDTH [ipgui::add_param $IPINST -name "AXIS_DATA_WIDTH" -parent ${AXI-Stream} -widget comboBox]
+  ipgui::add_param $IPINST -name "AXIS_DATA_WIDTH" -parent ${AXI-Stream} -widget comboBox
   set_property tooltip {Width of the AXIS data bus} ${AXIS_DATA_WIDTH}
 
 
