@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>tijs-roon</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>axis_testpattern_generator</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>M00_AXIS</spirit:name>
+      <spirit:displayName>M00_AXIS</spirit:displayName>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>m_axis_aclk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M_AXIS_ACLK.ASSOCIATED_RESET">m_axis_aresetn</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M_AXIS_ACLK.ASSOCIATED_BUSIF">M00_AXIS</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>m_axis_aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M_AXIS_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesis</spirit:name>
+        <spirit:displayName>Verilog Synthesis</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>axis_testpattern_generator</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>7af3fa77</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>e944ceea</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>bd_tcl</spirit:name>
+        <spirit:displayName>Block Diagram</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:block.diagram</spirit:envIdentifier>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_testbench</spirit:name>
+        <spirit:displayName>Test Bench</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation.testbench</spirit:envIdentifier>
+        <spirit:modelName>axis_testpattern_generator_test</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_testbench_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>fd4086dc</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>m_axis_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">1</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.M00_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>M00_AXIS_TDATA_WIDTH</spirit:name>
+        <spirit:displayName>M00 Axis Tdata Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.M00_AXIS_TDATA_WIDTH">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>COUNTER_START</spirit:name>
+        <spirit:displayName>Counter Start</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.COUNTER_START">1</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>COUNTER_END</spirit:name>
+        <spirit:displayName>Counter End</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.COUNTER_END">5</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>COUNTER_INCR</spirit:name>
+        <spirit:displayName>Counter Incr</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.COUNTER_INCR">1</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_bb6e8c60</spirit:name>
+      <spirit:enumeration>8</spirit:enumeration>
+      <spirit:enumeration>16</spirit:enumeration>
+      <spirit:enumeration>24</spirit:enumeration>
+      <spirit:enumeration>32</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>hdl/axis_testpattern_generator.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_7af3fa77</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/axis_testpattern_generator_v1_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_e944ceea</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_testbench_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>hdl/axis_testpattern_generator.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/axis_testpattern_generator_test.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>sim/axis_testpattern_generator_test_behav.wcfg</spirit:name>
+        <spirit:fileType>unknown</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>AXI-Stream TestPattern Generator</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">axis_testpattern_generator_v1_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>M00_AXIS_TDATA_WIDTH</spirit:name>
+      <spirit:displayName>M00 Axis Tdata Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M00_AXIS_TDATA_WIDTH" spirit:choiceRef="choice_list_bb6e8c60">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>COUNTER_START</spirit:name>
+      <spirit:displayName>Counter Start</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.COUNTER_START">1</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>COUNTER_END</spirit:name>
+      <spirit:displayName>Counter End</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.COUNTER_END">5</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>COUNTER_INCR</spirit:name>
+      <spirit:displayName>Counter Incr</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.COUNTER_INCR">1</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Pre-Production">zynq</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>/AXI_Peripheral</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>axis_testpattern_generator_v1.0</xilinx:displayName>
+      <xilinx:vendorDisplayName>Tijs van Roon</xilinx:vendorDisplayName>
+      <xilinx:coreRevision>3</xilinx:coreRevision>
+      <xilinx:upgrades>
+        <xilinx:canUpgradeFrom>xilinx.com:user:axis_testpattern_generator:1.0</xilinx:canUpgradeFrom>
+      </xilinx:upgrades>
+      <xilinx:coreCreationDateTime>2020-12-22T15:33:12Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c36f319_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4597a234_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ad142d8_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@743d4c46_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7137ba85_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b44c119_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43060a31_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@269de939_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7715bf2f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47866a31_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39bd44a8_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58b96a0f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5eaea934_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21870a69_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e583625_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@180560d3_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a8fdf7c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15e49f6d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@793e3cdc_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13133b63_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d0a81f9_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13e4f193_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@403f2353_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@673bbea4_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25d831a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5eb8c321_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28a6cdf7_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31e43fed_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53f0e1bf_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5584f6ac_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70c61076_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40188dac_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71164d03_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c46f885_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24dda6bf_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a001242_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b98ff3a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60e95c4d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@dfbf5df_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cfcbc16_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52b745f9_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fb0edfb_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21daef99_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d274f9b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1119274a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5153fb1d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ce84155_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d841bcb_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ab217bd_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f80834e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c22297a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@db05102_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4828916c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ef2af58_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75b18c6d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20fa6831_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4654b203_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e38c97a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31b2c834_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@560c55fa_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ff6b83c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6150940c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a6800c5_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b79973e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30b23b99_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d1c5797_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@111624bb_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@513b76ee_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c3cefd3_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16d74dfc_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18ecde3c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21af88ee_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d32aa68_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dd0b71e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e526da6_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77cf2b20_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78bd7f3e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b98153d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e499601_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58e8868a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44e5fa26_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78ceb75b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d016aeb_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d93d58e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1994164e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4396ac7c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@662f32f0_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52936f3d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@902e73b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6812df0e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62b5cd31_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a266e98_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b96ae58_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@151143c0_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b359d4f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55a6d9a6_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19e5b5b3_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32c17166_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a0f53f6_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2164405b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@637c028c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@710a6835_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58bec969_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a9c502b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7190d1f3_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@655a1b26_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bc94015_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a6ec87a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@773c9a4e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7815b127_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a43ef3f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@166d329e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21740ced_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38654ae_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71a6341_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a3e18ef_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e1d2297_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57cf30ec_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e9a255d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62254c97_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@638175c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c4e2b43_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a3cea2b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@789dc502_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14498a1c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@688b010c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1176bb6e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@611708f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@609f650b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e6f1132_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@562cc0e1_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@154ffa87_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3be311ee_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bee6950_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f8bf38f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@668675e0_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6eac49f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65e7cd3_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c2235f8_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53dea06_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@569fd28b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78aa9995_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69bd6afc_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@beff9a2_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@337abc1f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c742bb6_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35d7ae2f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ebfdeae_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393d7b77_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3701e2de_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@348246cd_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6295f2f1_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1450f81b_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c6026cb_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74d35ce9_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fde1075_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c0553f_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60f20178_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14046a59_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e683268_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a3c66c4_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c59c143_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d667f92_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@266adff4_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3949096a_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b9c6cd_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7699ff4c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41a2750c_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4673df9e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4579a068_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ef4ced5_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58d4a0e4_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@301283ec_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="56eb8794"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b3ede59c"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="7925f0b3"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="0aff7fdd"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="6515b56d"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>
