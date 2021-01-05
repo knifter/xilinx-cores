@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8798750fs"></ZoomStartTime>
-      <ZoomEndTime time="10240251fs"></ZoomEndTime>
-      <Cursor1Time time="9125750fs"></Cursor1Time>
+      <ZoomStartTime time="8948745fs"></ZoomStartTime>
+      <ZoomEndTime time="10210251fs"></ZoomEndTime>
+      <Cursor1Time time="8982662fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="174"></NameColumnWidth>
+      <NameColumnWidth column_width="166"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="9" />
    <wvobject fp_name="/axis_testpattern_generator_test/clk25" type="logic">
       <obj_property name="ElementShortName">clk25</obj_property>
       <obj_property name="ObjectShortName">clk25</obj_property>
@@ -40,5 +40,21 @@
    <wvobject fp_name="/axis_testpattern_generator_test/ready" type="logic">
       <obj_property name="ElementShortName">ready</obj_property>
       <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_testpattern_generator_test/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider9">
+      <obj_property name="label">DivCtr</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/divctr" type="array">
+      <obj_property name="ElementShortName">divctr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">divctr[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/div_edge" type="logic">
+      <obj_property name="ElementShortName">div_edge</obj_property>
+      <obj_property name="ObjectShortName">div_edge</obj_property>
    </wvobject>
 </wave_config>

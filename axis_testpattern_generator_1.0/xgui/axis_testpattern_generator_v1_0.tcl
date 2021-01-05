@@ -11,6 +11,7 @@ proc init_gui { IPINST } {
   set_property tooltip {Where to end counting} ${COUNTER_END}
   set COUNTER_INCR [ipgui::add_param $IPINST -name "COUNTER_INCR"]
   set_property tooltip {Every clock counter increments by} ${COUNTER_INCR}
+  ipgui::add_param $IPINST -name "DIVIDER"
 
 }
 
@@ -38,6 +39,15 @@ proc update_PARAM_VALUE.COUNTER_START { PARAM_VALUE.COUNTER_START } {
 
 proc validate_PARAM_VALUE.COUNTER_START { PARAM_VALUE.COUNTER_START } {
 	# Procedure called to validate COUNTER_START
+	return true
+}
+
+proc update_PARAM_VALUE.DIVIDER { PARAM_VALUE.DIVIDER } {
+	# Procedure called to update DIVIDER when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.DIVIDER { PARAM_VALUE.DIVIDER } {
+	# Procedure called to validate DIVIDER
 	return true
 }
 
@@ -69,5 +79,10 @@ proc update_MODELPARAM_VALUE.COUNTER_END { MODELPARAM_VALUE.COUNTER_END PARAM_VA
 proc update_MODELPARAM_VALUE.COUNTER_INCR { MODELPARAM_VALUE.COUNTER_INCR PARAM_VALUE.COUNTER_INCR } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.COUNTER_INCR}] ${MODELPARAM_VALUE.COUNTER_INCR}
+}
+
+proc update_MODELPARAM_VALUE.DIVIDER { MODELPARAM_VALUE.DIVIDER PARAM_VALUE.DIVIDER } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.DIVIDER}] ${MODELPARAM_VALUE.DIVIDER}
 }
 

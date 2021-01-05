@@ -26,6 +26,7 @@ module axis_testpattern_generator_test (   );
     // CLK & RST
     reg clk25;
     reg rst;
+    reg enable;
         
     // AXIS Master side
     wire[DATA_WIDTH-1:0]   data;
@@ -33,13 +34,15 @@ module axis_testpattern_generator_test (   );
     reg                    ready;
         
     axis_testpattern_generator #(
-        .M00_AXIS_DATA_WIDTH(DATA_WIDTH)
-//        .COUNTER_START(0),
-//        .COUNTER_END(500),
-//        .COUNTER_INCR(1)
+        .M00_AXIS_DATA_WIDTH(DATA_WIDTH),
+        .COUNTER_START(0),
+        .COUNTER_END(100),
+        .COUNTER_INCR(1),
+        .DIVIDER(5)
     ) DUT (
         .m_axis_aclk(clk25),
         .m_axis_aresetn(~rst),
+        .enable(enable),
             
         // AXI-Stream
         .m_axis_tdata(data), 
@@ -52,18 +55,24 @@ module axis_testpattern_generator_test (   );
         clk25 = 0;
         rst = 1;
         ready = 0;
+        enable = 1;
                     
         // reset
-        #40 rst = 0;
+        #190 rst = 0;
 
-        #99
+        #299
         ready = 1;
 
-        #99
+        #299
         ready = 0;
 
-        #99
+        #299
         ready = 1;
+        
+        #970 
+        enable = 0;
+        #500 
+        enable = 1;
     end
     
     // Generate CLK 100 MHz
