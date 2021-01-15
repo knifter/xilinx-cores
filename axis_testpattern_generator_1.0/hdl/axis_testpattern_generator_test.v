@@ -35,7 +35,7 @@ module axis_testpattern_generator_test (   );
         
     axis_testpattern_generator #(
         .M00_AXIS_DATA_WIDTH(DATA_WIDTH),
-        .COUNTER_START(0),
+        .COUNTER_START(1),
         .COUNTER_END(100),
         .COUNTER_INCR(1),
         .DIVIDER(5)
@@ -52,24 +52,27 @@ module axis_testpattern_generator_test (   );
         
     initial begin
         // init
-        clk25 = 0;
+        clk25 = 1;
         rst = 1;
-        ready = 0;
+        ready = 1;
         enable = 1;
                     
         // reset
-        #190 rst = 0;
+        #20 rst = 0;
 
-        #299
+        #500
+        ready = 0;
+        
+        #300
         ready = 1;
 
-        #299
+        #300
         ready = 0;
 
-        #299
+        #300
         ready = 1;
         
-        #970 
+        #900 
         enable = 0;
         #500 
         enable = 1;
