@@ -1,5 +1,6 @@
+`timescale 1ns / 100ps
 
-module axis_testpattern_generator #
+module axis_testpattern_generator_tvr #
 (
   parameter integer M00_AXIS_TDATA_WIDTH = 32,
   parameter integer COUNTER_START = 0,
@@ -27,22 +28,17 @@ module axis_testpattern_generator #
   begin
     if(~m_axis_aresetn)
     begin
-        divctr <= 0;
+        divctr <= DIVIDER;
     end
     else
     begin
         divctr <= divctr - 1;
         if(divzero)
-        begin
-            if(enable)
-                divctr <= DIVIDER;
-            else
-                // Keep it where it's at. This is needed to stop the incr
-                divctr <= divctr;
-        end
+            divctr <= DIVIDER;
     end
   end
-  
+  wire div_edge = divzero && enable;
+
   // edge detector, counter
   reg [M00_AXIS_TDATA_WIDTH-1:0] counter_head;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
@@ -53,7 +49,7 @@ module axis_testpattern_generator #
     end
     else
     begin
-      if(divzero)
+      if(div_edge)
       begin
         // incr or wrap counter
         if(counter_head >= COUNTER_END)
@@ -69,10 +65,10 @@ module axis_testpattern_generator #
   wire fifo_cnt = |(counter_head - counter_tail);
   reg m_axis_tvalid_reg;
   reg [3:0] state;    
-  localparam STATE_NEWTAIL	 = 4'd0;
-  localparam STATE_WAITREADY = 4'd1;
-  localparam STATE_WAITINCR  = 4'd2;
-  localparam STATE_INCR      = 4'd3;
+  localparam STATE_NEWTAIL	 = 2'd0;
+  localparam STATE_WAITREADY = 2'd1;
+  localparam STATE_WAITINCR  = 2'd2;
+  localparam STATE_INCR      = 2'd3;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin
     if(~m_axis_aresetn)
@@ -83,40 +79,47 @@ module axis_testpattern_generator #
         state <= STATE_NEWTAIL;
     end else 
     case(state)
-        // ready for action when wdata_available
-        STATE_NEWTAIL:
+        STATE_NEWTAIL: //0
         begin
             m_axis_tvalid_reg <= 1;
-            if(m_axis_tready)
+            if(m_axis_tready) begin
                 state <= STATE_WAITINCR;
-            else 
-                state <= STATE_WAITREADY; 
+            end else begin
+                state <= STATE_WAITREADY;
+            end
         end
     
-        // Start control word by pulsing frame_sync_out
-        STATE_WAITREADY: 
+        STATE_WAITREADY: //1
         begin
             if(m_axis_tready)
             begin
-                state <= STATE_WAITINCR; 
+                state <= STATE_WAITINCR;
             end
         end
         
-        // frame_sync down and first bit on the shifter
-        STATE_WAITINCR:
+        STATE_WAITINCR: //2
         begin
             m_axis_tvalid_reg <= 0;
-            if(fifo_cnt)
+            if(fifo_cnt) begin
                 state <= STATE_INCR;
+            end
         end
         
-        STATE_INCR:
+        STATE_INCR: //3
         begin
             if(counter_tail >= COUNTER_END)
                 counter_tail <= counter_tail - (COUNTER_END - COUNTER_START);
             else
                 counter_tail <= counter_tail + COUNTER_INCR;
-            state <= STATE_NEWTAIL;
+
+            // Newtail logic can be done in this state
+//            state <= STATE_NEWTAIL;
+            m_axis_tvalid_reg <= 1;
+            if(m_axis_tready) begin
+                state <= STATE_WAITINCR;
+            end else begin
+                state <= STATE_WAITREADY;
+            end
         end
     endcase
   end
