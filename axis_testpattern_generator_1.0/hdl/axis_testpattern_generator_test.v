@@ -22,6 +22,7 @@
 
 module axis_testpattern_generator_test (   );
     localparam DATA_WIDTH = 24;
+    localparam DIVIDER = 1;
     localparam START = 1;
     localparam END = 10;
     localparam INCR = 1;
@@ -34,12 +35,12 @@ module axis_testpattern_generator_test (   );
     wire[DATA_WIDTH-1:0]   tdata;
     wire                   tvalid;
     reg                    ready;        
-    axis_testpattern_generator_tvr #(
+    axis_testpattern_generator #(
         .M00_AXIS_TDATA_WIDTH(DATA_WIDTH),
         .COUNTER_START(START),
         .COUNTER_END(END),
         .COUNTER_INCR(INCR),
-        .DIVIDER(5)
+        .DIVIDER(DIVIDER)
     ) DUTT (
         .m_axis_aclk(clk25),
         .m_axis_aresetn(~rst),
@@ -58,7 +59,7 @@ module axis_testpattern_generator_test (   );
         .COUNTER_START(START),
         .COUNTER_END(END),
         .COUNTER_INCR(INCR),
-        .DIVIDER(5)
+        .DIVIDER(DIVIDER)
     ) DUTR (
         .m_axis_aclk(clk25),
         .m_axis_aresetn(~rst),
@@ -80,7 +81,7 @@ module axis_testpattern_generator_test (   );
         // reset
         #20 rst = 0;
 
-        #500
+        #480
         ready = 0;
         
         #300

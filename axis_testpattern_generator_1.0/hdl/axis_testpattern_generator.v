@@ -1,12 +1,12 @@
 `timescale 1ns / 100ps
 
-module axis_testpattern_generator_tvr #
+module axis_testpattern_generator #
 (
   parameter integer M00_AXIS_TDATA_WIDTH = 32,
   parameter integer COUNTER_START = 0,
   parameter integer COUNTER_END = 255,
   parameter integer COUNTER_INCR = 1,
-  parameter integer DIVIDER = 5
+  parameter integer DIVIDER = 8
 )
 (
   // System signals
@@ -37,9 +37,9 @@ module axis_testpattern_generator_tvr #
             divctr <= DIVIDER;
     end
   end
-  wire div_edge = divzero && enable;
+  wire div_edge = (divzero || DIVIDER == 1) && enable;
 
-  // edge detector, counter
+  // edge detector, head counter
   reg [M00_AXIS_TDATA_WIDTH-1:0] counter_head;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin
@@ -64,11 +64,9 @@ module axis_testpattern_generator_tvr #
   reg [M00_AXIS_TDATA_WIDTH-1:0] counter_tail;
   wire fifo_cnt = |(counter_head - counter_tail);
   reg m_axis_tvalid_reg;
-  reg [3:0] state;    
-  localparam STATE_NEWTAIL	 = 2'd0;
-  localparam STATE_WAITREADY = 2'd1;
-  localparam STATE_WAITINCR  = 2'd2;
-  localparam STATE_INCR      = 2'd3;
+  reg [0:0] state;    
+  localparam STATE_INIT	 = 1'd0;
+  localparam STATE_RUN   = 1'd1;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin
     if(~m_axis_aresetn)
@@ -76,47 +74,29 @@ module axis_testpattern_generator_tvr #
         counter_tail <= COUNTER_START;
         m_axis_tvalid_reg <= 0;
 
-        state <= STATE_NEWTAIL;
+        state <= STATE_INIT;
     end else 
     case(state)
-        STATE_NEWTAIL: //0
+        STATE_INIT: //0
         begin
             m_axis_tvalid_reg <= 1;
-            if(m_axis_tready) begin
-                state <= STATE_WAITINCR;
-            end else begin
-                state <= STATE_WAITREADY;
-            end
+            state <= STATE_RUN;
         end
-    
-        STATE_WAITREADY: //1
-        begin
-            if(m_axis_tready)
-                state <= STATE_WAITINCR;
-        end
-        
-        STATE_WAITINCR: //2
-        begin
-            m_axis_tvalid_reg <= 0;
-            if(fifo_cnt) begin
-                state <= STATE_INCR;
-            end
-        end
-        
-        STATE_INCR: //3
-        begin
-            if(counter_tail >= COUNTER_END-COUNTER_INCR+1)
-                counter_tail <= counter_tail + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
-            else
-                counter_tail <= counter_tail + COUNTER_INCR;
 
-            // Newtail logic can be done in this state
-//          state <= STATE_NEWTAIL :
-            m_axis_tvalid_reg <= 1;
-            if(m_axis_tready) begin
-                state <= STATE_WAITINCR;
-            end else begin
-                state <= STATE_WAITREADY;
+        STATE_RUN:
+        begin
+            if(m_axis_tready == 1)
+            begin    
+                // incr or wrap external counter
+                if(fifo_cnt) begin
+                    m_axis_tvalid_reg <= 1'b1;
+
+                    if(counter_tail >= COUNTER_END-COUNTER_INCR+1)
+                        counter_tail <= counter_tail + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
+                    else
+                        counter_tail <= counter_tail + COUNTER_INCR;
+                end else
+                  m_axis_tvalid_reg <= 1'b0;
             end
         end
     endcase
