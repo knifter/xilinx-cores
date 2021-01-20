@@ -1,5 +1,5 @@
-
-module axis_testpattern_generator #
+`timescale 1ns / 100ps
+module axis_testpattern_generator_roko #
 (
   parameter integer M00_AXIS_TDATA_WIDTH = 32,
   parameter integer COUNTER_START = 0,
@@ -48,31 +48,39 @@ module axis_testpattern_generator #
   // Output counter
   always @(posedge m_axis_aclk)
   begin
+    int_tvalid_reg <= 1'b1;
     if(~m_axis_aresetn)
     begin
-      counter <= COUNTER_END;
-      int_counter <= COUNTER_END;
-      int_tvalid_reg <= 1'b0;
+      if (~m_axis_tready)
+      begin
+        counter <= COUNTER_END;
+        int_counter <= COUNTER_END;
+        int_tvalid_reg <= 1'b0;
+      end
+      else
+      begin
+        counter <= COUNTER_START;
+        int_counter <= COUNTER_START;
+      end
     end
     else
     begin
-      if((divctr + 1) == DIVIDER && enable)
+      if((divctr == DIVIDER-1) && enable)
       begin
         // incr or wrap internal counter
-        if(int_counter >= COUNTER_END)
-          int_counter <= int_counter - (COUNTER_END - COUNTER_START);
+        if(int_counter >= (COUNTER_END-COUNTER_INCR+1))
+          int_counter <= int_counter + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
         else
           int_counter <= int_counter + COUNTER_INCR;
       end
 
       if(m_axis_tready == 1)
       begin
-        int_tvalid_reg <= 1'b1;
         // incr or wrap external counter
-        if((counter < int_counter) || (divctr == DIVIDER && enable && counter == int_counter))
+        if((counter != int_counter && counter >= (COUNTER_END-COUNTER_INCR+1)) )
+          counter <= counter + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
+        else if (counter != int_counter)
           counter <= counter + COUNTER_INCR;
-        else if (counter == COUNTER_END && int_counter != COUNTER_END)
-          counter <= counter - (COUNTER_END - COUNTER_START);
         else
           int_tvalid_reg <= 1'b0;
       end
