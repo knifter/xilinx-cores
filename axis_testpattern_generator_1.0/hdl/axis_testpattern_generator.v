@@ -51,9 +51,9 @@ module axis_testpattern_generator_tvr #
     begin
       if(div_edge)
       begin
-        // incr or wrap counter
-        if(counter_head >= COUNTER_END)
-            counter_head <= counter_head - (COUNTER_END - COUNTER_START);
+        // incr & wrap counter
+        if(counter_head >= COUNTER_END-COUNTER_INCR+1)
+            counter_head <= counter_head + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
         else
             counter_head <= counter_head + COUNTER_INCR;
       end
@@ -92,9 +92,7 @@ module axis_testpattern_generator_tvr #
         STATE_WAITREADY: //1
         begin
             if(m_axis_tready)
-            begin
                 state <= STATE_WAITINCR;
-            end
         end
         
         STATE_WAITINCR: //2
@@ -107,13 +105,13 @@ module axis_testpattern_generator_tvr #
         
         STATE_INCR: //3
         begin
-            if(counter_tail >= COUNTER_END)
-                counter_tail <= counter_tail - (COUNTER_END - COUNTER_START);
+            if(counter_tail >= COUNTER_END-COUNTER_INCR+1)
+                counter_tail <= counter_tail + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
             else
                 counter_tail <= counter_tail + COUNTER_INCR;
 
             // Newtail logic can be done in this state
-//            state <= STATE_NEWTAIL;
+//          state <= STATE_NEWTAIL :
             m_axis_tvalid_reg <= 1;
             if(m_axis_tready) begin
                 state <= STATE_WAITINCR;
