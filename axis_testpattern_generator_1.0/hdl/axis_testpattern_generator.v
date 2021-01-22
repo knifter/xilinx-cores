@@ -63,7 +63,7 @@ module axis_testpattern_generator #
   reg [M00_AXIS_TDATA_WIDTH-1:0] counter_tail;
   wire fifo_cnt = |(counter_head - counter_tail);
   reg m_axis_tvalid_reg;
-  reg [0:0] state;    
+  reg [0:0] state;
   localparam STATE_INIT	 = 1'd0;
   localparam STATE_RUN   = 1'd1;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
@@ -79,7 +79,8 @@ module axis_testpattern_generator #
         STATE_INIT: //0
         begin
             m_axis_tvalid_reg <= 1;
-            state <= STATE_RUN;
+            if(m_axis_tready)
+                state <= STATE_RUN;
         end
 
         STATE_RUN:
