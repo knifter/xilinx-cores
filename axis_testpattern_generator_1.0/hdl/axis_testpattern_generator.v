@@ -21,7 +21,7 @@ module axis_testpattern_generator #
 );
 
   // Divided 'clk'
-  reg [$clog2(DIVIDER-1)-1:0] divctr;
+  reg [$clog2(DIVIDER)-1:0] divctr;
   wire divzero = ~|divctr;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin

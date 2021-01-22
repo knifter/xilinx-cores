@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2539240fs"></ZoomStartTime>
-      <ZoomEndTime time="3353241fs"></ZoomEndTime>
-      <Cursor1Time time="2879740fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="582501fs"></ZoomEndTime>
+      <Cursor1Time time="20000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <NameColumnWidth column_width="134"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="18" />
@@ -40,16 +40,14 @@
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/DUTT/divctr" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">divctr[-1:0]</obj_property>
-      <obj_property name="ObjectShortName">divctr[-1:0]</obj_property>
-      <obj_property name="label">T_divctr[2:0]</obj_property>
+      <obj_property name="ElementShortName">divctr[2:0]</obj_property>
+      <obj_property name="ObjectShortName">divctr[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/DUTT/divzero" type="logic">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">divzero</obj_property>
       <obj_property name="ObjectShortName">divzero</obj_property>
-      <obj_property name="label">T_divzero</obj_property>
+      <obj_property name="label">divzero</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/DUTT/div_edge" type="logic">
       <obj_property name="ElementShortName">div_edge</obj_property>
@@ -63,7 +61,7 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">counter_head[23:0]</obj_property>
       <obj_property name="ObjectShortName">counter_head[23:0]</obj_property>
-      <obj_property name="label">T_head</obj_property>
+      <obj_property name="label">head</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/DUTT/state" type="array">
@@ -82,18 +80,16 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">counter_tail[23:0]</obj_property>
       <obj_property name="ObjectShortName">counter_tail[23:0]</obj_property>
-      <obj_property name="label">T_tail</obj_property>
+      <obj_property name="label">tail</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider49">
       <obj_property name="label">OUT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTR/m_axis_tready" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">m_axis_tready</obj_property>
-      <obj_property name="ObjectShortName">m_axis_tready</obj_property>
-      <obj_property name="label">tready</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/tdata" type="array">
       <obj_property name="ElementShortName">tdata[23:0]</obj_property>
@@ -108,6 +104,6 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">data_out_check</obj_property>
       <obj_property name="ObjectShortName">data_out_check</obj_property>
-      <obj_property name="label">Tcheck</obj_property>
+      <obj_property name="label">check</obj_property>
    </wvobject>
 </wave_config>
