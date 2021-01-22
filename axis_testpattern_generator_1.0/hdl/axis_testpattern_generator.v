@@ -21,23 +21,22 @@ module axis_testpattern_generator #
 );
 
   // Divided 'clk'
-  // if enable is low, we just stop rolling over the counter. Instead of just pausing the generator this will lengthen the counter increment and it will happen right after enable goes high again (if it was low sufficiently long)
-  reg [$clog2(DIVIDER)-1:0] divctr; // FIXME: calc
+  reg [$clog2(DIVIDER-1)-1:0] divctr;
   wire divzero = ~|divctr;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin
     if(~m_axis_aresetn)
     begin
-        divctr <= DIVIDER;
+        divctr <= DIVIDER - 1;
     end
     else
     begin
         divctr <= divctr - 1;
         if(divzero)
-            divctr <= DIVIDER;
+            divctr <= DIVIDER - 1;
     end
   end
-  wire div_edge = (divzero || DIVIDER == 1) && enable;
+  wire div_edge = divzero && enable;
 
   // edge detector, head counter
   reg [M00_AXIS_TDATA_WIDTH-1:0] counter_head;

@@ -22,7 +22,7 @@
 
 module axis_testpattern_generator_test (   );
     localparam DATA_WIDTH = 24;
-    localparam DIVIDER = 1;
+    localparam DIVIDER = 2;
     localparam START = 1;
     localparam END = 10;
     localparam INCR = 1;
