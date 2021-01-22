@@ -78,19 +78,62 @@ module axis_testpattern_generator_test (   );
         ready = 1;
         enable = 1;
                     
-        // reset
+        // un-reset
         #20 rst = 0;
 
-        #480
+        // async reset
+        #505
+        rst = 1;
+        #10
+        rst = 0;
+        #5
+        
+        // reset -> un-reset with tready low
+        #500
+        rst = 1;
+        ready = 0;
+        #20
+        rst = 0;
+        #40
+        ready = 1; 
+
+        // in-reset ready rattling        
+        #500
+        rst = 1;
+        #20
+        ready = 0;
+        #20
+        ready = 1;
+        #20
+        ready = 0;
+        #20
+        ready = 1;
+        #20
+        ready = 0;
+        #40
+        rst = 0;
+        #40
+        ready = 1;
+
+        // ready hold-up
+        #980
         ready = 0;
         
         #300
         ready = 1;
-
+        
+        // ready rattling
         #300
         ready = 0;
-
-        #300
+        #20
+        ready = 1;
+        #20
+        ready = 0;
+        #20
+        ready = 1;
+        #20
+        ready = 0;
+        #20
         ready = 1;
         
         #900 
