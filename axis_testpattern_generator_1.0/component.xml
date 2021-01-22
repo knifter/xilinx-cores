@@ -345,19 +345,20 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:supportedFamilies>
-        <xilinx:family xilinx:lifeCycle="Pre-Production">zynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">zynq</xilinx:family>
       </xilinx:supportedFamilies>
       <xilinx:taxonomies>
         <xilinx:taxonomy>/AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>axis_testpattern_generator_v1.0</xilinx:displayName>
+      <xilinx:autoFamilySupportLevel>level_0</xilinx:autoFamilySupportLevel>
       <xilinx:vendorDisplayName>Tijs van Roon / Ronald Kortekaas</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:axis_testpattern_generator:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>tijs-roon:user:axis_testpattern_generator:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2021-01-22T12:11:37Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2021-01-22T12:15:59Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5c36f319_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4597a234_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
@@ -967,6 +968,13 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@157dc5e7_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@a431483_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1b2eea0e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d27a26d_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f5b8f6e_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@291b6525_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39067401_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f7db35_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65d9dbe2_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43c45be6_ARCHIVE_LOCATION">d:/UltraStream/Vivado/cores/axis_testpattern_generator_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
