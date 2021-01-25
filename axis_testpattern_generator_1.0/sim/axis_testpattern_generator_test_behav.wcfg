@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="582501fs"></ZoomEndTime>
-      <Cursor1Time time="20000fs"></Cursor1Time>
+      <ZoomEndTime time="1464001fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="134"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="154"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="18" />
    <wave_markers>
@@ -39,17 +39,15 @@
       <obj_property name="label">DIV</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/divctr" type="array">
-      <obj_property name="ElementShortName">divctr[2:0]</obj_property>
-      <obj_property name="ObjectShortName">divctr[2:0]</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/divctr" type="array">
+      <obj_property name="ElementShortName">divctr[1:0]</obj_property>
+      <obj_property name="ObjectShortName">divctr[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/divzero" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/divzero" type="logic">
       <obj_property name="ElementShortName">divzero</obj_property>
       <obj_property name="ObjectShortName">divzero</obj_property>
-      <obj_property name="label">divzero</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/div_edge" type="logic">
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/div_edge" type="logic">
       <obj_property name="ElementShortName">div_edge</obj_property>
       <obj_property name="ObjectShortName">div_edge</obj_property>
    </wvobject>
@@ -57,31 +55,27 @@
       <obj_property name="label">HEAD</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/counter_head" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">counter_head[23:0]</obj_property>
-      <obj_property name="ObjectShortName">counter_head[23:0]</obj_property>
-      <obj_property name="label">head</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/state" type="array">
-      <obj_property name="ElementShortName">state[0:0]</obj_property>
-      <obj_property name="ObjectShortName">state[0:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/fifo_cnt" type="logic">
-      <obj_property name="ElementShortName">fifo_cnt</obj_property>
-      <obj_property name="ObjectShortName">fifo_cnt</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/counter_head" type="array">
+      <obj_property name="ElementShortName">counter_head[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_head[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider46">
       <obj_property name="label">TAIL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/counter_tail" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">counter_tail[23:0]</obj_property>
-      <obj_property name="ObjectShortName">counter_tail[23:0]</obj_property>
-      <obj_property name="label">tail</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/fifo_cnt" type="logic">
+      <obj_property name="ElementShortName">fifo_cnt</obj_property>
+      <obj_property name="ObjectShortName">fifo_cnt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/counter_tail" type="array">
+      <obj_property name="ElementShortName">counter_tail[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_tail[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/state" type="array">
+      <obj_property name="ElementShortName">state[0:0]</obj_property>
+      <obj_property name="ObjectShortName">state[0:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider49">
       <obj_property name="label">OUT</obj_property>
@@ -92,18 +86,16 @@
       <obj_property name="ObjectShortName">ready</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/tdata" type="array">
-      <obj_property name="ElementShortName">tdata[23:0]</obj_property>
-      <obj_property name="ObjectShortName">tdata[23:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="ElementShortName">tdata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tdata[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/axis_testpattern_generator_test/tvalid" type="logic">
       <obj_property name="ElementShortName">tvalid</obj_property>
       <obj_property name="ObjectShortName">tvalid</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUTT/data_out_check" type="logic">
-      <obj_property name="DisplayName">label</obj_property>
+   <wvobject fp_name="/axis_testpattern_generator_test/DUT/data_out_check" type="logic">
       <obj_property name="ElementShortName">data_out_check</obj_property>
       <obj_property name="ObjectShortName">data_out_check</obj_property>
-      <obj_property name="label">check</obj_property>
    </wvobject>
 </wave_config>

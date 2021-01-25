@@ -21,9 +21,9 @@
 
 
 module axis_testpattern_generator_test (   );
-    localparam DATA_WIDTH = 24;
+    localparam DATA_WIDTH = 8;
     localparam DIVIDER = 3;
-    localparam START = 1;
+    localparam START = -10;
     localparam END = 10;
     localparam INCR = 1;
     // CLK & RST
@@ -41,7 +41,7 @@ module axis_testpattern_generator_test (   );
         .COUNTER_END(END),
         .COUNTER_INCR(INCR),
         .DIVIDER(DIVIDER)
-    ) DUTT (
+    ) DUT (
         .m_axis_aclk(clk25),
         .m_axis_aresetn(~rst),
         .enable(enable),
@@ -63,7 +63,7 @@ module axis_testpattern_generator_test (   );
         #20 rst = 0;
 
         // async reset
-        #505
+        #1505
         rst = 1;
         #10
         rst = 0;

@@ -39,7 +39,7 @@ module axis_testpattern_generator #
   wire div_edge = divzero && enable;
 
   // edge detector, head counter
-  reg [M00_AXIS_TDATA_WIDTH-1:0] counter_head;
+  reg signed [M00_AXIS_TDATA_WIDTH-1:0] counter_head;
   always @(posedge m_axis_aclk, negedge m_axis_aresetn)
   begin
     if(~m_axis_aresetn)
@@ -51,7 +51,7 @@ module axis_testpattern_generator #
       if(div_edge)
       begin
         // incr & wrap counter
-        if(counter_head >= COUNTER_END-COUNTER_INCR+1)
+        if(counter_head >= (COUNTER_END-COUNTER_INCR+1))
             counter_head <= counter_head + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
         else
             counter_head <= counter_head + COUNTER_INCR;
@@ -60,7 +60,7 @@ module axis_testpattern_generator #
   end
 
   // Output register and virtual FIFO Statemachine
-  reg [M00_AXIS_TDATA_WIDTH-1:0] counter_tail;
+  reg signed [M00_AXIS_TDATA_WIDTH-1:0] counter_tail;
   wire fifo_cnt = |(counter_head - counter_tail);
   reg m_axis_tvalid_reg;
   reg [0:0] state;
@@ -91,7 +91,7 @@ module axis_testpattern_generator #
                 if(fifo_cnt) begin
                     m_axis_tvalid_reg <= 1'b1;
 
-                    if(counter_tail >= COUNTER_END-COUNTER_INCR+1)
+                    if(counter_tail >= (COUNTER_END-COUNTER_INCR+1))
                         counter_tail <= counter_tail + COUNTER_INCR - (COUNTER_END - COUNTER_START) - 1;
                     else
                         counter_tail <= counter_tail + COUNTER_INCR;
