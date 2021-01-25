@@ -2,16 +2,25 @@
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
-  set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  ipgui::add_param $IPINST -name "M00_AXIS_TDATA_WIDTH" -parent ${Page_0} -widget comboBox
+  ipgui::add_page $IPINST -name "Page 0"
 
-  set COUNTER_START [ipgui::add_param $IPINST -name "COUNTER_START"]
+  #Adding Group
+  set AXI [ipgui::add_group $IPINST -name "AXI" -display_name {AXIS Output}]
+  ipgui::add_param $IPINST -name "M00_AXIS_TDATA_WIDTH" -parent ${AXI} -widget comboBox
+
+  #Adding Group
+  set Rate [ipgui::add_group $IPINST -name "Rate"]
+  ipgui::add_param $IPINST -name "DIVIDER" -parent ${Rate}
+
+  #Adding Group
+  set Counter [ipgui::add_group $IPINST -name "Counter"]
+  set COUNTER_START [ipgui::add_param $IPINST -name "COUNTER_START" -parent ${Counter}]
   set_property tooltip {Where to begin counting} ${COUNTER_START}
-  set COUNTER_END [ipgui::add_param $IPINST -name "COUNTER_END"]
+  set COUNTER_END [ipgui::add_param $IPINST -name "COUNTER_END" -parent ${Counter}]
   set_property tooltip {Where to end counting} ${COUNTER_END}
-  set COUNTER_INCR [ipgui::add_param $IPINST -name "COUNTER_INCR"]
+  set COUNTER_INCR [ipgui::add_param $IPINST -name "COUNTER_INCR" -parent ${Counter}]
   set_property tooltip {Every clock counter increments by} ${COUNTER_INCR}
-  ipgui::add_param $IPINST -name "DIVIDER"
+
 
 }
 
