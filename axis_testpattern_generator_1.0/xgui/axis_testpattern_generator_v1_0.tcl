@@ -3,7 +3,8 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Group
   set AXI [ipgui::add_group $IPINST -name "AXI" -display_name {AXIS Output}]
-  ipgui::add_param $IPINST -name "M00_AXIS_TDATA_WIDTH" -parent ${AXI} -widget comboBox
+  set M_AXIS_TDATA_WIDTH [ipgui::add_param $IPINST -name "M_AXIS_TDATA_WIDTH" -parent ${AXI} -widget comboBox]
+  set_property tooltip {Master AXI-Stream Data Width} ${M_AXIS_TDATA_WIDTH}
 
   #Adding Group
   set Rate [ipgui::add_group $IPINST -name "Rate"]
@@ -57,20 +58,15 @@ proc validate_PARAM_VALUE.DIVIDER { PARAM_VALUE.DIVIDER } {
 	return true
 }
 
-proc update_PARAM_VALUE.M00_AXIS_TDATA_WIDTH { PARAM_VALUE.M00_AXIS_TDATA_WIDTH } {
-	# Procedure called to update M00_AXIS_TDATA_WIDTH when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.M_AXIS_TDATA_WIDTH { PARAM_VALUE.M_AXIS_TDATA_WIDTH } {
+	# Procedure called to update M_AXIS_TDATA_WIDTH when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.M00_AXIS_TDATA_WIDTH { PARAM_VALUE.M00_AXIS_TDATA_WIDTH } {
-	# Procedure called to validate M00_AXIS_TDATA_WIDTH
+proc validate_PARAM_VALUE.M_AXIS_TDATA_WIDTH { PARAM_VALUE.M_AXIS_TDATA_WIDTH } {
+	# Procedure called to validate M_AXIS_TDATA_WIDTH
 	return true
 }
 
-
-proc update_MODELPARAM_VALUE.M00_AXIS_TDATA_WIDTH { MODELPARAM_VALUE.M00_AXIS_TDATA_WIDTH PARAM_VALUE.M00_AXIS_TDATA_WIDTH } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.M00_AXIS_TDATA_WIDTH}] ${MODELPARAM_VALUE.M00_AXIS_TDATA_WIDTH}
-}
 
 proc update_MODELPARAM_VALUE.COUNTER_START { MODELPARAM_VALUE.COUNTER_START PARAM_VALUE.COUNTER_START } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
@@ -90,5 +86,10 @@ proc update_MODELPARAM_VALUE.COUNTER_INCR { MODELPARAM_VALUE.COUNTER_INCR PARAM_
 proc update_MODELPARAM_VALUE.DIVIDER { MODELPARAM_VALUE.DIVIDER PARAM_VALUE.DIVIDER } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.DIVIDER}] ${MODELPARAM_VALUE.DIVIDER}
+}
+
+proc update_MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH { MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH PARAM_VALUE.M_AXIS_TDATA_WIDTH } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.M_AXIS_TDATA_WIDTH}] ${MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH}
 }
 
