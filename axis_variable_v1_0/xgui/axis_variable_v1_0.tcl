@@ -1,12 +1,10 @@
 # Definitional proc to organize widgets for parameters.
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
-  #Adding Page
-  set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${Page_0}
+  #Adding Group
+  set AXI-Stream_Master [ipgui::add_group $IPINST -name "AXI-Stream Master"]
+  set AXIS_TDATA_WIDTH [ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${AXI-Stream_Master}]
   set_property tooltip {Width of the M_AXIS data bus.} ${AXIS_TDATA_WIDTH}
-
-
 }
 
 proc update_PARAM_VALUE.AXIS_TDATA_WIDTH { PARAM_VALUE.AXIS_TDATA_WIDTH } {
