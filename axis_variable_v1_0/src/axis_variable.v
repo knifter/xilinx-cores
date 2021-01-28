@@ -7,8 +7,8 @@ module axis_variable #
 )
 (
   // System signals
-  input  wire                        aclk,
-  input  wire                        aresetn,
+  input  wire                        m_axis_aclk,
+  input  wire                        m_axis_aresetn,
 
   input  wire [AXIS_TDATA_WIDTH-1:0] data_in,
 
