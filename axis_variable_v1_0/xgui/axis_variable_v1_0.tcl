@@ -3,8 +3,9 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Group
   set AXI-Stream_Master [ipgui::add_group $IPINST -name "AXI-Stream Master"]
-  set AXIS_TDATA_WIDTH [ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${AXI-Stream_Master}]
-  set_property tooltip {Width of the M_AXIS data bus.} ${AXIS_TDATA_WIDTH}
+  ipgui::add_param $IPINST -name "AXIS_TDATA_WIDTH" -parent ${AXI-Stream_Master}
+
+
 }
 
 proc update_PARAM_VALUE.AXIS_TDATA_WIDTH { PARAM_VALUE.AXIS_TDATA_WIDTH } {

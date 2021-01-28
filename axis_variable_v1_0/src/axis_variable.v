@@ -21,9 +21,9 @@ module axis_variable #
   reg [AXIS_TDATA_WIDTH-1:0] int_tdata_reg;
   reg int_tvalid_reg, int_tvalid_next;
 
-  always @(posedge aclk)
+  always @(posedge m_axis_aclk)
   begin
-    if(~aresetn)
+    if(~m_axis_aresetn)
     begin
       int_tdata_reg <= {(AXIS_TDATA_WIDTH){1'b0}};
       int_tvalid_reg <= 1'b0;
