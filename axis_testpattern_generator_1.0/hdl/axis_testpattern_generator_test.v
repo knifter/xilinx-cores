@@ -22,8 +22,9 @@
 
 module axis_testpattern_generator_test (   );
     localparam DATA_WIDTH = 8;
+    localparam BURSTSIZE = 0;
     localparam DIVIDER = 3;
-    localparam START = -10;
+    localparam START = 0;
     localparam END = 10;
     localparam INCR = 1;
     // CLK & RST
@@ -34,9 +35,11 @@ module axis_testpattern_generator_test (   );
     // AXIS Master side
     wire[DATA_WIDTH-1:0]   tdata;
     wire                   tvalid;
+    wire                   tlast;
     reg                    ready;        
     axis_testpattern_generator #(
-        .M00_AXIS_TDATA_WIDTH(DATA_WIDTH),
+        .M_AXIS_TDATA_WIDTH(DATA_WIDTH),
+        .M_AXIS_BURSTSIZE(BURSTSIZE),
         .COUNTER_START(START),
         .COUNTER_END(END),
         .COUNTER_INCR(INCR),
@@ -49,7 +52,8 @@ module axis_testpattern_generator_test (   );
         // AXI-Stream
         .m_axis_tdata(tdata), 
         .m_axis_tvalid(tvalid),
-        .m_axis_tready(ready)
+        .m_axis_tready(ready),
+        .m_axis_tlast(tlast)
     );
         
     initial begin

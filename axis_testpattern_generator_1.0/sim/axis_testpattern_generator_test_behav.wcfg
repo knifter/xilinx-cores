@@ -12,89 +12,105 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1464001fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomEndTime time="3206001fs"></ZoomEndTime>
+      <Cursor1Time time="923000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="154"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <NameColumnWidth column_width="157"></NameColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="22" />
    <wave_markers>
-      <marker time="0" label="" />
+      <marker label="" time="0" />
    </wave_markers>
-   <wvobject fp_name="/axis_testpattern_generator_test/clk25" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/clk25">
       <obj_property name="ElementShortName">clk25</obj_property>
       <obj_property name="ObjectShortName">clk25</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/rst" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/rst">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/enable" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/enable">
       <obj_property name="ElementShortName">enable</obj_property>
       <obj_property name="ObjectShortName">enable</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider9">
+   <wvobject fp_name="divider9" type="divider">
       <obj_property name="label">DIV</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/divctr" type="array">
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/DUT/divctr">
       <obj_property name="ElementShortName">divctr[1:0]</obj_property>
       <obj_property name="ObjectShortName">divctr[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/divzero" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/DUT/divzero">
       <obj_property name="ElementShortName">divzero</obj_property>
       <obj_property name="ObjectShortName">divzero</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/div_edge" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/DUT/div_edge">
       <obj_property name="ElementShortName">div_edge</obj_property>
       <obj_property name="ObjectShortName">div_edge</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider57">
+   <wvobject fp_name="divider57" type="divider">
       <obj_property name="label">HEAD</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/counter_head" type="array">
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/DUT/counter_head">
       <obj_property name="ElementShortName">counter_head[7:0]</obj_property>
       <obj_property name="ObjectShortName">counter_head[7:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider46">
+   <wvobject fp_name="divider46" type="divider">
       <obj_property name="label">TAIL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/fifo_cnt" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/DUT/fifo_cnt">
       <obj_property name="ElementShortName">fifo_cnt</obj_property>
       <obj_property name="ObjectShortName">fifo_cnt</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/counter_tail" type="array">
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/DUT/counter_tail">
       <obj_property name="ElementShortName">counter_tail[7:0]</obj_property>
       <obj_property name="ObjectShortName">counter_tail[7:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/state" type="array">
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/DUT/state">
       <obj_property name="ElementShortName">state[0:0]</obj_property>
       <obj_property name="ObjectShortName">state[0:0]</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider49">
+   <wvobject fp_name="divider140" type="divider">
+      <obj_property name="label">BURST</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/DUT/tlast_counter">
+      <obj_property name="ElementShortName">tlast_counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tlast_counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/DUT/m_axis_tlast">
+      <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider49" type="divider">
       <obj_property name="label">OUT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/ready" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/ready">
       <obj_property name="ElementShortName">ready</obj_property>
       <obj_property name="ObjectShortName">ready</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/tdata" type="array">
+   <wvobject type="array" fp_name="/axis_testpattern_generator_test/tdata">
       <obj_property name="ElementShortName">tdata[7:0]</obj_property>
       <obj_property name="ObjectShortName">tdata[7:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/tvalid" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/tvalid">
       <obj_property name="ElementShortName">tvalid</obj_property>
       <obj_property name="ObjectShortName">tvalid</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/data_out_check" type="logic">
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/tlast">
+      <obj_property name="ElementShortName">tlast</obj_property>
+      <obj_property name="ObjectShortName">tlast</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/axis_testpattern_generator_test/DUT/data_out_check">
       <obj_property name="ElementShortName">data_out_check</obj_property>
       <obj_property name="ObjectShortName">data_out_check</obj_property>
    </wvobject>

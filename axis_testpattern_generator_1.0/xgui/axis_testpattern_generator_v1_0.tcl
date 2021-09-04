@@ -2,9 +2,12 @@
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Group
-  set AXI [ipgui::add_group $IPINST -name "AXI" -display_name {AXIS Output}]
+  set AXI [ipgui::add_group $IPINST -name "AXI" -display_name {M_AXIS Output}]
+  set_property tooltip {M_AXIS Output} ${AXI}
   set M_AXIS_TDATA_WIDTH [ipgui::add_param $IPINST -name "M_AXIS_TDATA_WIDTH" -parent ${AXI} -widget comboBox]
   set_property tooltip {Master AXI-Stream Data Width} ${M_AXIS_TDATA_WIDTH}
+  set M_AXIS_BURSTSIZE [ipgui::add_param $IPINST -name "M_AXIS_BURSTSIZE" -parent ${AXI} -widget comboBox]
+  set_property tooltip {AXI Stream Burst Length. For length 0/1 TLAST == 0/1} ${M_AXIS_BURSTSIZE}
 
   #Adding Group
   set Rate [ipgui::add_group $IPINST -name "Rate"]
@@ -58,6 +61,15 @@ proc validate_PARAM_VALUE.DIVIDER { PARAM_VALUE.DIVIDER } {
 	return true
 }
 
+proc update_PARAM_VALUE.M_AXIS_BURSTSIZE { PARAM_VALUE.M_AXIS_BURSTSIZE } {
+	# Procedure called to update M_AXIS_BURSTSIZE when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.M_AXIS_BURSTSIZE { PARAM_VALUE.M_AXIS_BURSTSIZE } {
+	# Procedure called to validate M_AXIS_BURSTSIZE
+	return true
+}
+
 proc update_PARAM_VALUE.M_AXIS_TDATA_WIDTH { PARAM_VALUE.M_AXIS_TDATA_WIDTH } {
 	# Procedure called to update M_AXIS_TDATA_WIDTH when any of the dependent parameters in the arguments change
 }
@@ -91,5 +103,10 @@ proc update_MODELPARAM_VALUE.DIVIDER { MODELPARAM_VALUE.DIVIDER PARAM_VALUE.DIVI
 proc update_MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH { MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH PARAM_VALUE.M_AXIS_TDATA_WIDTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.M_AXIS_TDATA_WIDTH}] ${MODELPARAM_VALUE.M_AXIS_TDATA_WIDTH}
+}
+
+proc update_MODELPARAM_VALUE.M_AXIS_BURSTSIZE { MODELPARAM_VALUE.M_AXIS_BURSTSIZE PARAM_VALUE.M_AXIS_BURSTSIZE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.M_AXIS_BURSTSIZE}] ${MODELPARAM_VALUE.M_AXIS_BURSTSIZE}
 }
 

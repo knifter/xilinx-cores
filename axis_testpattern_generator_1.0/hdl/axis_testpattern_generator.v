@@ -3,6 +3,7 @@
 module axis_testpattern_generator #
 (
   parameter integer M_AXIS_TDATA_WIDTH = 32,
+  parameter integer M_AXIS_BURSTSIZE = 16,
   parameter integer COUNTER_START = 0,
   parameter integer COUNTER_END = 255,
   parameter integer COUNTER_INCR = 1,
@@ -17,7 +18,8 @@ module axis_testpattern_generator #
   // Master side
   input  wire                        m_axis_tready,
   output wire [M_AXIS_TDATA_WIDTH-1:0] m_axis_tdata,
-  output wire                        m_axis_tvalid
+  output wire                        m_axis_tvalid,
+  output wire                        m_axis_tlast
 );
 
   // Divided 'clk'
@@ -101,10 +103,30 @@ module axis_testpattern_generator #
         end
     endcase
   end
-            
+  
+  // TLAST generator
+  reg [$clog2(M_AXIS_BURSTSIZE)-1:0] tlast_counter;
+  always @(posedge m_axis_aclk, negedge m_axis_aresetn)
+  begin
+    if(~m_axis_aresetn)
+    begin
+        tlast_counter <= M_AXIS_BURSTSIZE - 1;
+    end else
+    begin
+        if(m_axis_tvalid & m_axis_tready)
+        begin
+            if(~|tlast_counter)
+                tlast_counter <= M_AXIS_BURSTSIZE - 1;
+            else
+                tlast_counter <= tlast_counter - 1;
+        end
+    end
+  end
+
   // outputs
   assign m_axis_tdata = counter_tail;
   assign m_axis_tvalid = m_axis_tvalid_reg;
+  assign m_axis_tlast = (M_AXIS_BURSTSIZE == 1) | (~|tlast_counter & m_axis_tvalid & (M_AXIS_BURSTSIZE > 0));
   
   wire data_out_check = m_axis_tvalid & m_axis_tready & m_axis_aclk;
 endmodule
