@@ -20,9 +20,10 @@ module axis_packet_combiner #
     input  wire                        m_axis_tready,
     output wire [AXIS_TDATA_WIDTH-1:0] m_axis_tdata,
     output wire                        m_axis_tvalid,
-    output wire                        m_axis_tlast
-);
+    output wire                        m_axis_tlast,
     
+    output wire                        synced_out
+);
     wire data_valid = s_axis_tready & s_axis_tvalid;
     wire data_last_valid = data_valid & s_axis_tlast;
     
@@ -60,28 +61,28 @@ module axis_packet_combiner #
     end   
 
     // Count packets in inputstream
-    reg [$clog2(PACKETS_PER_PACKET)-1:0] count;
-    wire packet_end = ~|count;
+    reg [$clog2(PACKETS_PER_PACKET)-1:0] ip_cnt;
+    wire op_end = ~|ip_cnt;
     always @(posedge axis_aclk, negedge axis_aresetn)
     begin
         if(~axis_aresetn)
         begin
-            count <= PACKETS_PER_PACKET - 1;
+            ip_cnt <= PACKETS_PER_PACKET - 1;
         end
         else
         begin
             if(data_last_valid && synced)
             begin
-                if(packet_end) begin
-                    count <= PACKETS_PER_PACKET - 1;
+                if(op_end) begin
+                    ip_cnt <= PACKETS_PER_PACKET - 1;
                 end else begin
-                    count <= count - 1;
+                    ip_cnt <= ip_cnt - 1;
                 end
             end
         end
     end
   
-    wire gen_tlast = packet_end && synced && data_last_valid;
+    wire gen_tlast = op_end && synced && data_last_valid;
 
     assign s_axis_tready = m_axis_tready;
 
@@ -89,4 +90,5 @@ module axis_packet_combiner #
     assign m_axis_tdata = s_axis_tdata;
     assign m_axis_tlast = gen_tlast;
 
+    assign synced_out = synced;
 endmodule
