@@ -21,11 +21,11 @@
 
 
 module axis_testpattern_generator_test (   );
-    localparam DATA_WIDTH = 8;
-    localparam BURSTSIZE = 0;
+    localparam DATA_WIDTH = 32;
+    localparam BURSTSIZE = 1;
     localparam DIVIDER = 3;
     localparam START = 0;
-    localparam END = 10;
+    localparam END = 4294967295;
     localparam INCR = 1;
     // CLK & RST
     reg clk25;
