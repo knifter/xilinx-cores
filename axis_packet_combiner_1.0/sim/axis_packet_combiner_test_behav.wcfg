@@ -3,89 +3,86 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="axis_testpattern_generator_test_behav.wdb" id="1">
+      <db_ref path="axis_packet_combiner_test_behav.wdb" id="1">
          <top_modules>
-            <top_module name="axis_testpattern_generator_test" />
+            <top_module name="axis_packet_combiner_test" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="143.990 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,220.991 ns"></ZoomEndTime>
-      <Cursor1Time time="11,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="495.001 ns"></ZoomEndTime>
+      <Cursor1Time time="218.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="164"></NameColumnWidth>
-      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
-   <wvobject fp_name="/axis_testpattern_generator_test/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/rst" type="logic">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
+   <WVObjectSize size="7" />
    <wvobject fp_name="group26" type="group">
       <obj_property name="label">S_AXIS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/axis_testpattern_generator_test/s_tdata" type="array">
-         <obj_property name="ElementShortName">s_tdata[7:0]</obj_property>
-         <obj_property name="ObjectShortName">s_tdata[7:0]</obj_property>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/s_axis_tready" type="logic">
+         <obj_property name="ElementShortName">s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tready</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/s_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/s_axis_tdata" type="array">
+         <obj_property name="ElementShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tdata[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/s_tready" type="logic">
-         <obj_property name="ElementShortName">s_tready</obj_property>
-         <obj_property name="ObjectShortName">s_tready</obj_property>
-      </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/s_tvalid" type="logic">
-         <obj_property name="ElementShortName">s_tvalid</obj_property>
-         <obj_property name="ObjectShortName">s_tvalid</obj_property>
-      </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/s_tlast" type="logic">
-         <obj_property name="ElementShortName">s_tlast</obj_property>
-         <obj_property name="ObjectShortName">s_tlast</obj_property>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/s_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">s_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tlast</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/data_valid" type="logic">
+   <wvobject fp_name="/axis_packet_combiner_test/DUT/data_valid" type="logic">
       <obj_property name="ElementShortName">data_valid</obj_property>
       <obj_property name="ObjectShortName">data_valid</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/data_last_valid" type="logic">
+   <wvobject fp_name="/axis_packet_combiner_test/DUT/data_last_valid" type="logic">
       <obj_property name="ElementShortName">data_last_valid</obj_property>
       <obj_property name="ObjectShortName">data_last_valid</obj_property>
    </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/synced_next" type="logic">
-      <obj_property name="ElementShortName">synced_next</obj_property>
-      <obj_property name="ObjectShortName">synced_next</obj_property>
-   </wvobject>
-   <wvobject fp_name="/axis_testpattern_generator_test/DUT/synced" type="logic">
+   <wvobject fp_name="/axis_packet_combiner_test/DUT/synced" type="logic">
       <obj_property name="ElementShortName">synced</obj_property>
       <obj_property name="ObjectShortName">synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_packet_combiner_test/DUT/ip_cnt" type="array">
+      <obj_property name="ElementShortName">ip_cnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">ip_cnt[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axis_packet_combiner_test/DUT/gen_tlast" type="logic">
+      <obj_property name="ElementShortName">gen_tlast</obj_property>
+      <obj_property name="ObjectShortName">gen_tlast</obj_property>
    </wvobject>
    <wvobject fp_name="group27" type="group">
       <obj_property name="label">M_AXIS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/axis_testpattern_generator_test/m_tdata" type="array">
-         <obj_property name="ElementShortName">m_tdata[7:0]</obj_property>
-         <obj_property name="ObjectShortName">m_tdata[7:0]</obj_property>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/m_axis_tready" type="logic">
+         <obj_property name="ElementShortName">m_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+      </wvobject>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/m_axis_tdata" type="array">
+         <obj_property name="ElementShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tdata[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/m_tvalid" type="logic">
-         <obj_property name="ElementShortName">m_tvalid</obj_property>
-         <obj_property name="ObjectShortName">m_tvalid</obj_property>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/m_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
       </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/m_tlast" type="logic">
-         <obj_property name="ElementShortName">m_tlast</obj_property>
-         <obj_property name="ObjectShortName">m_tlast</obj_property>
-      </wvobject>
-      <wvobject fp_name="/axis_testpattern_generator_test/m_tready" type="logic">
-         <obj_property name="ElementShortName">m_tready</obj_property>
-         <obj_property name="ObjectShortName">m_tready</obj_property>
+      <wvobject fp_name="/axis_packet_combiner_test/DUT/m_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

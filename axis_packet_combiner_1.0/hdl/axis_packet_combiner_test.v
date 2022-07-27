@@ -21,9 +21,9 @@
 
 
 module axis_packet_combiner_test (   );
-    localparam DATA_WIDTH = 8;
-    localparam PACKETS_PER_PACKET = 3;
-
+    localparam DATA_WIDTH = 32;
+    localparam PACKETS_PER_PACKET = 1024;
+    localparam DISCARD_FIRST = 1;
     // CLK & RST
     reg clk;
     reg rst;
@@ -42,7 +42,7 @@ module axis_packet_combiner_test (   );
     axis_packet_combiner #(
         .AXIS_TDATA_WIDTH(DATA_WIDTH),
         .PACKETS_PER_PACKET(PACKETS_PER_PACKET),
-        .DISCARD_FIRST_PACKET(0)
+        .DISCARD_FIRST_PACKET(DISCARD_FIRST)
     ) DUT (
         .axis_aclk(clk),
         .axis_aresetn(~rst),
@@ -138,7 +138,7 @@ module axis_packet_combiner_test (   );
         s_tlast <= 1;
         #20 s_tvalid <= 0;
 
-        // Now send compelte packet 4, output packet 2
+        // Now send compelte packet 4, 
         #60        
         s_tdata <= 41;
         s_tvalid <= 1;
@@ -177,46 +177,57 @@ module axis_packet_combiner_test (   );
         #20        
         s_tdata <= 3;
         s_tlast <= 1;
-
-        // Now send complete packet 1
         #20        
+
+        // Now send complete packet 1 
         s_tdata <= 11;
         s_tlast <= 0;
-        #20        
-        s_tdata <= 12;
+//        #20        
+//        s_tdata <= 12;
         #20        
         s_tdata <= 13;
         s_tlast <= 1;
-
-        // Now send complete packet 1
         #20        
+
+        // Now send complete packet 2 
         s_tdata <= 21;
         s_tlast <= 0;
-        #20        
-        s_tdata <= 22;
+//        #20        
+//        s_tdata <= 22;
         #20        
         s_tdata <= 23;
         s_tlast <= 1;
-
-        // Now send complete packet 1
         #20        
+
+        // Now send complete packet 3
         s_tdata <= 31;
         s_tlast <= 0;
-        #20        
-        s_tdata <= 32;
+//        #20        
+//        s_tdata <= 32;
         #20        
         s_tdata <= 33;
         s_tlast <= 1;
-
-        // Now send complete packet 1
         #20        
+
+        // Now send complete packet 4
         s_tdata <= 41;
         s_tlast <= 0;
-        #20        
-        s_tdata <= 42;
+//        #20        
+//        s_tdata <= 42;
         #20        
         s_tdata <= 43;
         s_tlast <= 1;
+        #20        
+
+        // Now send complete packet 5
+        s_tdata <= 51;
+        s_tlast <= 0;
+//        #20        
+//        s_tdata <= 52;
+        #20        
+        s_tdata <= 53;
+        s_tlast <= 1;
+        #20
         // Done
         
         // TEST 3: packet-size = 1 (TLAST tied 1)
