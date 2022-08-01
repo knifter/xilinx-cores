@@ -30,23 +30,6 @@ module axis_packet_combiner #
     // detect the first tlast = 1 to prevent sending half input packets
     // Note: tlast can be tied to 1 in which case packet_len = 1 and counte counts samples instead of packets
     reg synced;
-    reg synced_next;
-    always @*
-    begin
-        if(~axis_aresetn)
-        begin
-            if(DISCARD_FIRST_PACKET)
-                synced_next = 0;
-            else
-                synced_next = 1;
-        end else begin   
-            // skip everything until we've seen the last sample from a packet
-            if(data_last_valid)
-            begin
-                synced_next = 1;
-            end
-        end
-    end
     always @(posedge axis_aclk, negedge axis_aresetn)
     begin
         if(~axis_aresetn)
@@ -54,11 +37,15 @@ module axis_packet_combiner #
             if(DISCARD_FIRST_PACKET)
                 synced <= 0;
             else
-                synced <= 1;            
-        end else begin
-            synced <= synced_next;
+                synced <= 1;
+        end else begin   
+            // skip everything until we've seen the last sample from a packet
+            if(data_last_valid)
+            begin
+                synced <= 1;
+            end
         end
-    end   
+    end
 
     // Count packets in inputstream
     reg [$clog2(PACKETS_PER_PACKET)-1:0] ip_cnt;

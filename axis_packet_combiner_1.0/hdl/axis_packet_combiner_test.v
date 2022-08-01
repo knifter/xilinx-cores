@@ -22,7 +22,7 @@
 
 module axis_packet_combiner_test (   );
     localparam DATA_WIDTH = 32;
-    localparam PACKETS_PER_PACKET = 1024;
+    localparam PACKETS_PER_PACKET = 2;
     localparam DISCARD_FIRST = 1;
     // CLK & RST
     reg clk;
@@ -74,7 +74,7 @@ module axis_packet_combiner_test (   );
         // un-reset
         #20 rst = 0;
 
-        // we assume 3 vals per input packet
+        // we assume 2 vals per input packet
         // send the two last values of a partial packet
         #60
         s_tdata <= 2;
